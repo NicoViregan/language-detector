@@ -13,11 +13,14 @@ public class ReadBook {
         List<String> resultList = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(bookTitle));
-            resultList = reader.lines().flatMap(x -> Stream.of(x.split(" "))).distinct().collect(Collectors.toList());
+            resultList = reader.lines().flatMap(x -> Stream.of(x.split(" "))).filter(x -> x.length() > 1)
+                    .collect(Collectors.toList());
+
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        System.out.println(resultList);
         return resultList;
 
     }
