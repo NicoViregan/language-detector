@@ -12,9 +12,10 @@ public class ReadBook {
     public List<String> readBook(final String bookTitle) {
         List<String> resultList = new ArrayList<>();
         try {
+
             BufferedReader reader = new BufferedReader(new FileReader(bookTitle));
-            resultList = reader.lines().flatMap(x -> Stream.of(x.split(" "))).filter(x -> x.length() > 1)
-                    .collect(Collectors.toList());
+            resultList = reader.lines().flatMap(x -> Stream.of(x.split("\\W"))).filter(x -> x.length() > 0)
+                    .map(String::toLowerCase).collect(Collectors.toList());
 
 
         } catch (FileNotFoundException e) {
