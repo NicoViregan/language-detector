@@ -13,7 +13,7 @@ public class BookReader {
         List<String> resultList = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(bookTitle));
-            resultList = reader.lines().flatMap(x -> Stream.of(x.split("\\W"))).filter(x -> x.length() > 0)
+            resultList = reader.lines().flatMap(x -> Stream.of(x.split("\\W"))).filter(x -> x.length() > 1)
                     .map(String::toLowerCase).collect(Collectors.toList());
         } catch (FileNotFoundException e) {
             e.printStackTrace();

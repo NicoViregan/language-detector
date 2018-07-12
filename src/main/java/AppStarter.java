@@ -22,5 +22,4 @@ public class AppStarter {
         final List<Dataset<Row>> freqWordsForAllLanguages = finder.find(booksList, sparkSession);
         ParquetWriter.write(freqWordsForAllLanguages);
     }
-
 }
